@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>윤리경영 퀴즈 - 관리자</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="admin-screen" class="screen">
+            <h1>윤리경영 퀴즈 관리자</h1>
+            
+            <div class="admin-login" id="admin-login">
+                <div class="form-group">
+                    <label for="admin-password">관리자 비밀번호</label>
+                    <input type="password" id="admin-password" placeholder="비밀번호를 입력하세요">
+                </div>
+                <button id="admin-login-btn" class="btn">로그인</button>
+            </div>
+            
+            <div id="admin-panel" class="admin-panel hidden">
+                <h2>점수 관리</h2>
+                <div class="button-container">
+                    <button id="view-scores-btn" class="btn">전체 점수 보기</button>
+                    <button id="download-json-btn" class="btn btn-secondary">JSON 다운로드</button>
+                    <button id="download-csv-btn" class="btn btn-secondary">CSV 다운로드</button>
+                    <button id="reset-scores-btn" class="btn btn-danger">모든 점수 초기화</button>
+                </div>
+                
+                <div id="loading-indicator" class="loading hidden">데이터를 불러오는 중...</div>
+                
+                <div id="scores-container" class="scores-container hidden">
+                    <h3>모든 참가자 점수</h3>
+                    <div id="all-scores" class="all-scores"></div>
+                </div>
+                
+                <hr class="admin-divider">
+                
+                <div class="admin-footer">
+                    <a href="index.html" class="btn btn-secondary">사용자 페이지로 이동</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html> 

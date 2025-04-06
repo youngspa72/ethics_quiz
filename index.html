@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025년윤리경영 퀴즈</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script>
+    // 모달 기능 전용 스크립트
+    window.onload = function() {
+        // 도움말 버튼 클릭 이벤트
+        document.getElementById('help-btn').onclick = function() {
+            document.getElementById('help-modal').style.display = 'flex';
+        };
+        
+        // X 닫기 버튼
+        document.getElementById('close-modal-btn').onclick = function() {
+            document.getElementById('help-modal').style.display = 'none';
+        };
+        
+        // 하단 닫기 버튼
+        document.getElementById('close-help-button').onclick = function() {
+            document.getElementById('help-modal').style.display = 'none';
+        };
+        
+        // 모달 외부 클릭 이벤트
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('help-modal')) {
+                document.getElementById('help-modal').style.display = 'none';
+            }
+        };
+    };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="login-screen" class="screen">
+            <div class="title-container">
+                <h1>2025년 윤리경영 퀴즈</h1>
+                <button id="help-btn" class="game-rules-btn">게임방법</button>
+            </div>
+            <div class="form-group">
+                <label for="team-name">소속팀명</label>
+                <input type="text" id="team-name" placeholder="소속팀명을 입력하세요" required>
+            </div>
+            <div class="form-group">
+                <label for="employee-id">사번</label>
+                <input type="text" id="employee-id" placeholder="사번을 입력하세요" required>
+            </div>
+            <div class="form-group">
+                <label for="employee-name">이름</label>
+                <input type="text" id="employee-name" placeholder="이름을 입력하세요" required>
+            </div>
+            <button id="start-btn" class="btn">시작하기</button>
+        </div>
+
+        <div id="quiz-screen" class="screen hidden">
+            <div class="quiz-header">
+                <div class="info">
+                    <span id="player-info"></span>
+                    <span id="score">점수: 0</span>
+                </div>
+                <div class="timer-container">
+                    <div id="timer-bar">
+                        <div id="timer-progress"></div>
+                    </div>
+                    <span id="timer">60</span>초
+                </div>
+            </div>
+
+            <div id="question-container">
+                <h2 id="question"></h2>
+                <div id="options" class="options-container"></div>
+                <div id="explanation" class="hidden"></div>
+            </div>
+
+            <div id="warning-message" class="hidden">정상적인 방법으로 풀어 주세요!</div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <h1>퀴즈 결과</h1>
+            <div id="player-result"></div>
+            <h2>최고 점수 순위</h2>
+            <div id="leaderboard"></div>
+            <div class="button-container">
+                <button id="restart-btn" class="btn">다시 시작하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 도움말 모달 -->
+    <div id="help-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal-btn">&times;</span>
+            <h2>퀴즈 이용 방법</h2>
+            <div class="help-content">
+                <h3>퀴즈 참여 방법</h3>
+                <ol>
+                    <li>소속팀명, 사번, 이름을 입력하고 '시작하기' 버튼을 클릭합니다.</li>
+                    <li>60초 동안 제시되는 문제를 풀어주세요.</li>
+                    <li>각 문제는 4개의 보기 중 하나를 선택하는 방식입니다.</li>
+                </ol>
+
+                <h3>점수 계산</h3>
+                <ul>
+                    <li>정답: +10점</li>
+                    <li>오답: -5점</li>
+                    <li>최종 점수가 가장 높은 상위 5명이 리더보드에 표시됩니다.</li>
+                    <li>이전에 참여했던 점수보다 높은 점수를 받을 경우에만 기록이 갱신됩니다.</li>
+                </ul>
+
+                <h3>주의사항</h3>
+                <ul>
+                    <li>1초 이내에 문제를 빠르게 풀면 경고 메시지가 표시됩니다.</li>
+                    <li>시간이 종료되면 자동으로 퀴즈가 종료됩니다.</li>
+                    <li>문제를 모두 풀면 결과 화면으로 이동합니다.</li>
+                </ul>
+                
+                <div class="modal-footer">
+                    <button id="close-help-button" class="btn">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html> 
